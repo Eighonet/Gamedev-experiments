@@ -33,7 +33,6 @@ public class Angles extends TexturePacker {
 	
 	@Override
 	public void Create() {
-		// 0. Create a loader for the file saved from the editor.
 		FileHandle file = Gdx.files.internal("data/border.json");
 		BodyEditorLoader loader = new BodyEditorLoader(file);
 		
@@ -51,16 +50,12 @@ public class Angles extends TexturePacker {
 		fd.friction = 0.5f;
 		fd.restitution = 3.5f;
 
-	
-		
-		// 3. Create a Body, as usual.
 		angleLModel = world.createBody(bd1);
 		angleRModel = world.createBody(bd2);
 		
 		angleLModel.setUserData("angularReflector"); 
 		angleRModel.setUserData("angularReflector"); 
 		
-		// 4. Create the body fixture automatically by using the loader.
 		loader.attachFixture(angleLModel, "angle-left", fd, (float) WIDTH);
 		loader.attachFixture(angleRModel, "angle-right", fd, (float) WIDTH);
 		angleLModelOrigin = loader.getOrigin("angle-left", WIDTH).cpy();

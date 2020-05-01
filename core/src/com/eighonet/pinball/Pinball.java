@@ -139,9 +139,11 @@ public class Pinball implements Screen, ContactListener {
 		
 		world.setContactListener(this);
 		
+		rend = new Box2DDebugRenderer();
+		
+
 		camera = new OrthographicCamera(CAMERA_WIDTH, CAMERA_HEIGHT);
 		viewport = new FitViewport(CAMERA_WIDTH, CAMERA_HEIGHT, camera);
-		rend = new Box2DDebugRenderer();
 		
 		
 		
@@ -346,6 +348,7 @@ public class Pinball implements Screen, ContactListener {
 
 		Gdx.gl.glClearColor(255, 255, 122, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		
 		rend.render(world, camera.combined);
 		world.step(1/60f, 4, 4);
 

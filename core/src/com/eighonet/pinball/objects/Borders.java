@@ -31,11 +31,9 @@ public class Borders extends TexturePacker {
 	
 	@Override
 	public void Create() {
-			// 0. Create a loader for the file saved from the editor.
 			FileHandle file = Gdx.files.internal("data/border.json");
 			BodyEditorLoader loader = new BodyEditorLoader(file);
 
-			// 1. Create a BodyDef, as usual.
 			BodyDef bd = new BodyDef();
 			BodyDef bdCurve = new BodyDef();
 			BodyDef bdL = new BodyDef();
@@ -51,20 +49,16 @@ public class Borders extends TexturePacker {
 			bdL.position.set((float) -3.28,-4);
 			bdR.position.set((float) 1,-4);
 
-			// 2. Create a FixtureDef, as usual.
 			FixtureDef fd = new FixtureDef();
 			fd.density = 0.1f;
 			fd.friction = 0.3f;
 			fd.restitution = 0.1f;
 
-			// 3. Create a Body, as usual.
 			bottleModel = world.createBody(bd);
 			wallModel = world.createBody(bdCurve);
 			wallLModel = world.createBody(bdL);
 			wallRModel = world.createBody(bdR);
 
-			
-			// 4. Create the body fixture automatically by using the loader.
 			loader.attachFixture(bottleModel, "123", fd, BOTTLE_WIDTH);
 			loader.attachFixture(wallModel, "wall", fd, WALL_WIDTH);
 			loader.attachFixture(wallRModel, "wallR", fd, WALL_LR_WIDTH);

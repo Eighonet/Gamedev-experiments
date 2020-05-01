@@ -28,11 +28,9 @@ public class Checkers extends TexturePacker{
 	
 	@Override
 	public void Create() {
-		// 0. Create a loader for the file saved from the editor.
 		FileHandle file = Gdx.files.internal("data/border.json");
 		BodyEditorLoader loader = new BodyEditorLoader(file);
 			
-		// 1. Create a BodyDef, as usual.
 		BodyDef bd1 = new BodyDef(), bd2 = new BodyDef(), bd3 = new BodyDef(),
 				bd4 = new BodyDef(), bd5 = new BodyDef(), bd6 = new BodyDef(), bd7 = new BodyDef();
 		
@@ -57,12 +55,10 @@ public class Checkers extends TexturePacker{
 		bd7.type = BodyType.StaticBody;
 		bd7.position.set((float) 1.6, (float)2.35f);
 		
-		// 2. Create a FixtureDef, as usual.
 		FixtureDef fd = new FixtureDef();
 
 		fd.isSensor = true;
 	
-		// 3. Create a Body, as usual.
 		checkerModels[0] = world.createBody(bd2);
 		checkerModels[1] = world.createBody(bd1);
 		checkerModels[2] = world.createBody(bd3);

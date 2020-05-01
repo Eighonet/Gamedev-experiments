@@ -43,6 +43,7 @@ public class Main implements Screen {
 		batch = new SpriteBatch();
 		camera = new OrthographicCamera();
 		viewport = new FitViewport(450, 800, camera);
+		
 	  	stage = new Stage();
 	  	
 		img1 = new Texture("MenuTitle.jpg"); // some texture
@@ -142,8 +143,7 @@ public class Main implements Screen {
 //		file.writeString("My god, it's full of stars", true);
 //		System.out.println(file.readString());
 		
-		
-		
+
 		for (int i = 1; i < 7; i += 2) {
 			buttonImg[i].setPosition(Gdx.graphics.getWidth()/2 - buttonSprite[i].getWidth()/2, 
 					Gdx.graphics.getHeight()/2 - i*buttonSprite[i].getHeight() + 3*buttonSprite[i].getHeight()/2);
@@ -154,8 +154,10 @@ public class Main implements Screen {
 
 	@Override
 	public void render(float delta) {
+		
 		Gdx.gl.glClearColor(255, 255, 255, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		
 		batch.begin();
 		stage.draw();
 		batch.end();

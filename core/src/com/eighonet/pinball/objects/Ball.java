@@ -26,17 +26,13 @@ public class Ball extends TexturePacker {
 
 	
 	public void Create() {
-		// 0. Create a loader for the file saved from the editor.
 		FileHandle file = Gdx.files.internal("data/border.json");
 		BodyEditorLoader loader = new BodyEditorLoader(file);
 		
-		// 1. Create a BodyDef, as usual.
 		BodyDef bd = new BodyDef();
 		bd.type = BodyType.DynamicBody;
 		bd.position.set((float)3.2,1);
 		
-	//	bd.position.set((float)-1.5,-2);
-		// 2. Create a FixtureDef, as usual.
 		
 		FixtureDef fd = new FixtureDef();
 		
@@ -44,11 +40,9 @@ public class Ball extends TexturePacker {
 		fd.friction = 0.5f;
 		fd.restitution = 0.3f;
 
-	
-		// 3. Create a Body, as usual.
+
 		model = world.createBody(bd);
 		model.setUserData("BALL"); 
-		// 4. Create the body fixture automatically by using the loader.
 		loader.attachFixture(model, "ball", fd, (float) WIDTH);
 		modelOrigin = loader.getOrigin("ball", WIDTH).cpy();
 		

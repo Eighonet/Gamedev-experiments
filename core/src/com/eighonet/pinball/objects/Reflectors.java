@@ -31,11 +31,9 @@ public class Reflectors extends TexturePacker {
 	
 	@Override
 	public void Create() {
-		// 0. Create a loader for the file saved from the editor.
 				FileHandle file = Gdx.files.internal("data/border.json");
 				BodyEditorLoader loader = new BodyEditorLoader(file);
 					
-				// 1. Create a BodyDef, as usual.
 				BodyDef bd1 = new BodyDef(), bd2 = new BodyDef(), bd3 = new BodyDef();
 				
 				bd1.type = BodyType.KinematicBody;
@@ -47,25 +45,20 @@ public class Reflectors extends TexturePacker {
 				bd3.type = BodyType.KinematicBody;
 				bd3.position.set((float) -1.35, (float)2.6);
 				
-				// 2. Create a FixtureDef, as usual.
 				FixtureDef fd = new FixtureDef();
 				fd.density = -10;
 				fd.friction = 0.5f;
 				fd.restitution = 2f;
 
 			
-				// 3. Create a Body, as usual.
 				reflectorFModel = world.createBody(bd1);
 				reflectorSModel = world.createBody(bd2);
 				reflectorTModel = world.createBody(bd3);
-				
-				
 				
 				reflectorFModel.setUserData("mainReflector"); 
 				reflectorSModel.setUserData("mainReflector"); 
 				reflectorTModel.setUserData("mainReflector");
 				
-				// 4. Create the body fixture automatically by using the loader.
 				loader.attachFixture(reflectorFModel, "hitbox1", fd, (float) WIDTH);
 				reflectorFModelOrigin = loader.getOrigin("hitbox1", WIDTH).cpy();
 				
@@ -79,7 +72,6 @@ public class Reflectors extends TexturePacker {
 				reflectorSprite2 = Pack(reflectorTexture, "data/gfx/firstCB .png", WIDTH);
 				reflectorSprite3 = Pack(reflectorTexture, "data/gfx/firstCB .png", WIDTH);
 	}
-
 	@Override
 	public void Assembly() {
 		reflectorSprite1 = Connect(reflectorSprite1, reflectorFModel, reflectorFModelOrigin);
